@@ -1,0 +1,39 @@
+<h1>Dragin Ball Z</h1>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-pesonajes [personajes]="personajes">
+        </app-pesonajes>
+    </div>
+
+    <div class="col">
+        <h3>Agregar <small> {{ nuevo.nombre }}</small></h3>
+        <hr>
+
+        <form (ngSubmit)="agregar()"> <!--ngSubmit es un modulo de forms module para capturar y cancelar un evento, en este caso permite no refrescar la pagina-->
+            <input 
+                type="text" 
+                placeholder="Nombre" 
+                name="nombre"
+                [(ngModel)]="nuevo.nombre"
+            /> <!--[value] se le indica que en el lado del componente.ts hay una propiedad que se le quiere enlazar directamente-->
+               <!--los parentesis son para escuchar o emitir un evento-->
+                <!--las llaves cuadraras son para establecer una propiedad al objeto-->
+                <!--[value]="nuevo.nombre"
+                (input)="cambiarNombre( $event )"-->
+                
+            <input 
+                type="text" 
+                placeholder="Poder" 
+                name="poder"
+                [(ngModel)]="nuevo.poder"
+            />
+            
+            <button type="submit">
+                Agregar
+            </button>
+        </form>
+
+    </div>
+</div>
