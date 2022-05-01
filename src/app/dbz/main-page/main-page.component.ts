@@ -24,13 +24,13 @@ export class MainPageComponent  {
   }
 
   agregar () {
-    if( this.nuevo.nombre.trim().length === 0 ) {
+    if( this.nuevo.nombre.trim().length === 0 ) { //trim = borra espacios en blanco
       return;
     }
     console.log(this.nuevo);
 
-    this.personajes.push ( this.nuevo )
-    this.nuevo = {
+    this.personajes.push ( this.nuevo ) //push = añade valores a un array
+    this.nuevo = { //esto es para purgar el formulario, o reiniciarlo a vacio
       nombre: '',
       poder: 0
     }
