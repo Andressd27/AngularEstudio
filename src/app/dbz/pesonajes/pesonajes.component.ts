@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Personaje } from '../interfaces/dbz.interface';
+import { DbzService } from "../services/dbz.service";
 
 @Component({
   selector: 'app-pesonajes',
@@ -7,6 +8,12 @@ import { Personaje } from '../interfaces/dbz.interface';
 })
 export class PesonajesComponent  {
 
-  @Input() //me dice que los personajes van a venir del componente padre, es decir del main component
-  personajes: Personaje [] = []
+  //@Input() personajes: Personaje [] = [] //me dice que los personajes van a venir del componente padre, es decir del main component
+  
+  get personajes() {
+    return this.dbzService.personajes;
+  }
+
+  constructor( private dbzService: DbzService ) {
+  }
 }
