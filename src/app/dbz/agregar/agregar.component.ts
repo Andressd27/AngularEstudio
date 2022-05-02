@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { Personaje } from '../interfaces/dbz.interface';
 
 @Component({
@@ -7,24 +7,24 @@ import { Personaje } from '../interfaces/dbz.interface';
 })
 export class AgregarComponent {
 
-  @Input() personajes: Personaje [] = [];
-
   @Input() nuevo: Personaje = {
     nombre: '',
     poder: 0
   }
 
+  @Output() onNuevoPersonaje: EventEmitter<Personaje> = new EventEmitter();
+
   agregar () {
     if( this.nuevo.nombre.trim().length === 0 ) { //trim = borra espacios en blanco
-      return;
+      return; 
     }
-    console.log(this.nuevo);
+    console.log( this.nuevo );
+    this.onNuevoPersonaje.emit( this.nuevo );
 
-    this.personajes.push ( this.nuevo ) //push = añade valores a un array
+    //this.personajes.push ( this.nuevo ) //push = añade valores a un array
     this.nuevo = { //esto es para purgar el formulario, o reiniciarlo a vacio
       nombre: '',
       poder: 0
     }
-    console.log(this.personajes);
   }
 }
